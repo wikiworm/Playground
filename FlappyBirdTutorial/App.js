@@ -48,14 +48,14 @@ export default class App extends Component {
         let ceiling = Matter.Bodies.rectangle( Constants.MAX_WIDTH / 2, 25, Constants.MAX_WIDTH, 50, { isStatic: true });
 
         let [firstPipeTopHeight, firstPipeBotHeight] = generatePipes();
-        let firstPipeTop = Matter.Bodies.rectangle( Constants.MAX_WIDTH - (Constants.PIPE_WIDTH / 2), firstPipeTopHeight / 2, Constants.PIPE_WIDTH, firstPipeTopHeight, { isStatic: true });
-        let firstPipeBot = Matter.Bodies.rectangle( Constants.MAX_WIDTH - (Constants.PIPE_WIDTH / 2), Constants.MAX_HEIGHT - (firstPipeBotHeight / 2), Constants.PIPE_WIDTH, firstPipeBotHeight, { isStatic: true });
+        let pipe_idx1 = Matter.Bodies.rectangle( Constants.MAX_WIDTH - (Constants.PIPE_WIDTH / 2), firstPipeTopHeight / 2, Constants.PIPE_WIDTH, firstPipeTopHeight, { isStatic: true });
+        let pipe_idx2 = Matter.Bodies.rectangle( Constants.MAX_WIDTH - (Constants.PIPE_WIDTH / 2), Constants.MAX_HEIGHT - (firstPipeBotHeight / 2), Constants.PIPE_WIDTH, firstPipeBotHeight, { isStatic: true });
 
         let [secondPipeTopHeight, secondPipeBotHeight] = generatePipes();
-        let secondPipeTop = Matter.Bodies.rectangle( Constants.MAX_WIDTH * 2 - (Constants.PIPE_WIDTH / 2), secondPipeTopHeight / 2, Constants.PIPE_WIDTH, secondPipeTopHeight, { isStatic: true });
-        let secondPipeBot = Matter.Bodies.rectangle( Constants.MAX_WIDTH * 2 - (Constants.PIPE_WIDTH / 2), Constants.MAX_HEIGHT - (secondPipeBotHeight / 2), Constants.PIPE_WIDTH, secondPipeBotHeight, { isStatic: true });
+        let pipe_idx3 = Matter.Bodies.rectangle( Constants.MAX_WIDTH * 2 - (Constants.PIPE_WIDTH / 2), secondPipeTopHeight / 2, Constants.PIPE_WIDTH, secondPipeTopHeight, { isStatic: true });
+        let pipe_idx4 = Matter.Bodies.rectangle( Constants.MAX_WIDTH * 2 - (Constants.PIPE_WIDTH / 2), Constants.MAX_HEIGHT - (secondPipeBotHeight / 2), Constants.PIPE_WIDTH, secondPipeBotHeight, { isStatic: true });
 
-        Matter.World.add(world, [bird, floor, ceiling, firstPipeTop, firstPipeBot, secondPipeTop, secondPipeBot]);
+        Matter.World.add(world, [bird, floor, ceiling, pipe_idx1, pipe_idx2, pipe_idx3, pipe_idx4]);
 
 
         return {
@@ -63,10 +63,10 @@ export default class App extends Component {
             bird: { body: bird, size: [50, 50], color: 'red', renderer: Bird},
             floor: { body: floor, size: [Constants.MAX_WIDTH, 50], color: "green", renderer: Wall },
             ceiling: { body: ceiling, size: [Constants.MAX_WIDTH, 50], color: "green", renderer: Wall },
-            firstPipeTop: { body: firstPipeTop, size: [Constants.PIPE_WIDTH, firstPipeTopHeight], color: "green", renderer: Wall },
-            firstPipeBot: { body: firstPipeBot, size: [Constants.PIPE_WIDTH, firstPipeBotHeight], color: "green", renderer: Wall },
-            secondPipeTop: { body: secondPipeTop, size: [Constants.PIPE_WIDTH, secondPipeTopHeight], color: "green", renderer: Wall },
-            secondPipeBot: { body: secondPipeBot, size: [Constants.PIPE_WIDTH, secondPipeBotHeight], color: "green", renderer: Wall }
+            pipe_idx1: { body: pipe_idx1, size: [Constants.PIPE_WIDTH, firstPipeTopHeight], color: "green", renderer: Wall },
+            pipe_idx2: { body: pipe_idx2, size: [Constants.PIPE_WIDTH, firstPipeBotHeight], color: "green", renderer: Wall },
+            pipe_idx3: { body: pipe_idx3, size: [Constants.PIPE_WIDTH, secondPipeTopHeight], color: "green", renderer: Wall },
+            pipe_idx4: { body: pipe_idx4, size: [Constants.PIPE_WIDTH, secondPipeBotHeight], color: "green", renderer: Wall }
         }
     }
 
